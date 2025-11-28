@@ -23,7 +23,7 @@ electron 项目 ：https://github.com/GeekLee2012/Less-Player-Desktop
 
 ## TODO
 
-- [] 更新模块
+- [X] v0.1.1 支持版本更新
 
 ## 安装
 

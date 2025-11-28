@@ -1,11 +1,11 @@
 {
-  "version": "0.1.8",
-  "notes": "0.1.8",
+  "version": "0.1.1",
+  "notes": "0.1.1",
   "pub_date": "2025-11-20T05:52:39.191Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVROEpDWDd3b0JCak43MVFYTC9ha2FGM1pHbUVmMmVxbHFxZEtva3pSaXpiazVJWHFNaHlpNWFGVnloYkxrbTVLVkdTTjFmbDRrdytuRXdIdno2R2ViajNnWVdGYkd3U1EwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzY0MzI5MTUwCWZpbGU6TVXpn7PkuZDnm5JfMC4xLjhfeDY0LXNldHVwLmV4ZQpiaHBEOThFOWQ4ZlgwM2F1NVFxREpOU1FvREZKcjIwekVVSWNxQ09CMXBhc2ZjeC94ZjNLQWtVZTdEbzgzOG16OXZ0MGZ3ZkRsSUc3OGZWZ1A1NktEdz09Cg==",
-      "url": "https://gitee.com/laowus/mu/releases/download/0.1.8/MU音乐盒_0.1.8_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVROEpDWDd3b0JCak5PR1lPR2dGMFQ2MERCRnBGSTdiWG9jYkpHRkNFNDdhM05RcG1vMVF5TTdhRHdqR0VxZUFKOENURnNnUzE1ZE1QZVdROWl5S1R6NWJQT0N0d3dYMXc4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzY0MzQ5Mzg3CWZpbGU6TXVCb3jpn7PkuZDnm5JfMC4xLjFfeDY0LXNldHVwLmV4ZQpGNHNnN0ZZRmZLQXVCczZnMFlEdVphMlYycGdJNHhPZVFvbFczT0dFRVN3Z2ZoZnBDYnlEbTFraHBHSUVFa29xOGFDT0liVjUraC9qaDlmTUVnUE5EQT09Cg==",
+      "url": "https://gitee.com/laowus/mu/releases/download/0.1.1/MU音乐盒_0.1.1_x64-setup.exe"
     }
   }
 }
