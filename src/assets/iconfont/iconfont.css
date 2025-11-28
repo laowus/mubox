@@ -1,0 +1,143 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 5064015 */
+  src: url('iconfont.woff2?t=1764067883595') format('woff2'),
+       url('iconfont.woff?t=1764067883595') format('woff'),
+       url('iconfont.ttf?t=1764067883595') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-gengxin:before {
+  content: "\e668";
+}
+
+.icon-lianjie:before {
+  content: "\e605";
+}
+
+.icon-Location:before {
+  content: "\e61c";
+}
+
+.icon-tianjia:before {
+  content: "\e607";
+}
+
+.icon-shanchu:before {
+  content: "\e604";
+}
+
+.icon-gequliebiao:before {
+  content: "\e6b4";
+}
+
+.icon-zanting:before {
+  content: "\e638";
+}
+
+.icon-danquxunhuan:before {
+  content: "\e602";
+}
+
+.icon-duoxunhuan:before {
+  content: "\e621";
+}
+
+.icon-random:before {
+  content: "\ea7c";
+}
+
+.icon-xiangxiajiantou:before {
+  content: "\e65e";
+}
+
+.icon-sanjiaoxing:before {
+  content: "\e620";
+}
+
+.icon-wuxiandianbo:before {
+  content: "\ec79";
+}
+
+.icon-geshou:before {
+  content: "\e601";
+}
+
+.icon-zuixiaohua:before {
+  content: "\e629";
+}
+
+.icon-guanbi1:before {
+  content: "\e639";
+}
+
+.icon-shangyishoushangyige:before {
+  content: "\e78a";
+}
+
+.icon-xiayigexiayishou:before {
+  content: "\e7a5";
+}
+
+.icon-pajian_gequliebiao_:before {
+  content: "\e717";
+}
+
+.icon-touxiang:before {
+  content: "\e65f";
+}
+
+.icon-zuidahua:before {
+  content: "\e600";
+}
+
+.icon-24gl-volumeCross:before {
+  content: "\ea0b";
+}
+
+.icon-24gl-volumeHigh:before {
+  content: "\ea0c";
+}
+
+.icon-24gl-volumeLow:before {
+  content: "\ea0d";
+}
+
+.icon-24gl-volumeMiddle:before {
+  content: "\ea0e";
+}
+
+.icon-24gf-pauseCircle:before {
+  content: "\ea81";
+}
+
+.icon-bofang:before {
+  content: "\e611";
+}
+
+.icon-quanbu:before {
+  content: "\e61b";
+}
+
+.icon-sousuo:before {
+  content: "\e667";
+}
+
+.icon-shezhi:before {
+  content: "\e663";
+}
+
+.icon-shangyige:before {
+  content: "\e603";
+}
+
+.icon-xiayige:before {
+  content: "\e60c";
+}
+

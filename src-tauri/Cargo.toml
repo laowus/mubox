@@ -1,0 +1,36 @@
+[package]
+name = "mubox"
+version = "0.1.1"
+description = "MuBox音乐盒"
+authors = ["you"]
+edition = "2021"
+
+
+[lib]
+name = "mubox_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["protocol-asset"] }
+serde_json = "1.0"
+tauri-plugin-opener = "2"
+tauri-plugin-shell = "2"
+tauri-plugin-log = "2"
+tauri-plugin-fs = "2"
+tauri-plugin-os = "2"
+tauri-plugin-process = "2"
+tauri-plugin-dialog = "2"
+tauri-plugin-http = { version = "2", features = ["dangerous-settings"] }
+serde = { version = "1.0", features = ["derive"] }
+reqwest = { version = "0.11", features = ["json", "rustls-tls"] }
+lofty = "0.22.4"
+base64 = "0.21"
+
+
+[target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
+tauri-plugin-single-instance = "2"
+tauri-plugin-window-state = "2"
+tauri-plugin-updater = "2"
