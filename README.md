@@ -27,11 +27,6 @@ electron 项目 ：https://github.com/GeekLee2012/Less-Player-Desktop
 
 ## 安装
 
-下载
-```
- git clone https://github.com/laowus/mu.git
-
-```
 
 安装依赖
 `
