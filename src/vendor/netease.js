@@ -6,10 +6,6 @@ import { Playlist } from "../common/Playlist.js";
 import { Track } from "../common/Track";
 import { randomText } from "../common/Utils";
 
-const DEFAULT_CATE = new Category("默认");
-DEFAULT_CATE.add("全部", "");
-const DOM_PARSER = new DOMParser();
-
 //常量
 const MODULUS = "00e0b509f6259df8642dbc35662901477df22677ec152b5ff68ace615bb7b72" + "5152b3ab17a876aea8a5aa76d2e417629ec4ee341f56135fccf695280104e0312ecbd" + "a92557c93870114af6c9d05c4f7f0c3685b7a46bee255932575cce10b424d813cfe48" + "75d3e82047b97ddef52741d546b8e289dc6935b3ece0462db0a22b8e7";
 const NONCE = "0CoJUm6Qyw8W8jud";
@@ -71,6 +67,10 @@ const playParam = (id) => {
     csrf_token: "",
   };
 };
+
+const DEFAULT_CATE = new Category("默认");
+DEFAULT_CATE.add("全部", "");
+const DOM_PARSER = new DOMParser();
 
 export class NetEase {
   static CODE = "netease";
@@ -158,9 +158,58 @@ export class NetEase {
     });
   }
 
+  //排行榜列表
+  static toplist(cate, offset, limit, page) {
+    return new Promise((resolve) => {
+      const result = {
+        platform: NetEase.CODE,
+        cate,
+        offset: 0,
+        limit: 100,
+        page: 1,
+        total: 0,
+        data: [],
+      };
+      if (page > 1) {
+        resolve(result);
+        return;
+      }
+      const url = "https://music.163.com/discover/toplist";
+      invoke("http_get_text", { url, header: NetEase.header }).then((res) => {
+        const doc = DOM_PARSER.parseFromString(res, "text/html");
+        const listEl = doc.querySelectorAll("#toplist li");
+        listEl.forEach((el) => {
+          let id = null,
+            cover = null,
+            title = null,
+            itemUrl = null;
+
+          const coverEl = el.querySelector(".mine .left img");
+          const titleEl = el.querySelector(".mine .name a");
+
+          if (coverEl) {
+            cover = coverEl.getAttribute("src").replace("40y40", "500y500");
+          }
+
+          if (titleEl) {
+            title = titleEl.textContent;
+            itemUrl = BASE_URL + titleEl.getAttribute("href");
+            id = itemUrl.split("=")[1];
+          }
+
+          if (id && itemUrl) {
+            const detail = new Playlist(id, NetEase.CODE, cover, title, itemUrl);
+            result.data.push(detail);
+          }
+        });
+        resolve(result);
+      });
+    });
+  }
+
   //歌单详情
   static playlistDetail(id, offset, limit, page) {
-    // if (id.startsWith(Playlist.ANCHOR_RADIO_ID_PREFIX)) return NetEase.anchorRadioDetail(id, offset, limit, page);
+    if (id.startsWith(Playlist.ANCHOR_RADIO_ID_PREFIX)) return NetEase.anchorRadioDetail(id, offset, limit, page);
     return new Promise((resolve, reject) => {
       const result = new Playlist();
       let url = "https://music.163.com/weapi/v3/playlist/detail";
@@ -223,6 +272,52 @@ export class NetEase {
           result.url = song.url;
           resolve(result);
         });
+      });
+    });
+  }
+
+  static anchorRadioDetail(id, offset, limit, page) {
+    const resolvedId = id.replace(Playlist.ANCHOR_RADIO_ID_PREFIX, "");
+    return new Promise((resolve, reject) => {
+      const url = "https://music.163.com/djradio?id=" + resolvedId + "&order=1&_hash=programlist&limit=100&offset=" + (page - 1) * 100;
+      invoke("http_get_text", { url, header: NetEase.header }).then((res) => {
+        const doc = DOM_PARSER.parseFromString(res, "text/html");
+        const coverEl = doc.querySelector(".m-info .cover img");
+        const title = doc.querySelector(".m-info .tit").textContent.trim();
+        const about = doc.querySelector(".m-info .intr").textContent.trim();
+        const result = new Playlist(id, NetEase.CODE, null, title, url, about);
+        result.type = Playlist.ANCHOR_RADIO_TYPE;
+        if (coverEl) {
+          const cover = coverEl.getAttribute("src").replace("200y200", "500y500");
+          result.cover = cover;
+        }
+        const subtitleEl = doc.querySelector(".n-songtb .u-title .sub");
+        if (subtitleEl) {
+          const subtitle = subtitleEl.textContent.replace("共", "").replace("期", "").trim();
+          result.total = parseInt(subtitle);
+        }
+
+        const artistName = doc.querySelector(".cnt .name").textContent.trim();
+        const trEls = doc.querySelectorAll(".n-songtb tbody tr");
+        trEls.forEach((trEl) => {
+          const songlistId = trEl.getAttribute("id").replace("songlist-", "");
+          const tid = NetEase.RADIO_PREFIX + trEl.querySelector(".tt a").getAttribute("href").split("=")[1];
+          const tTitle = trEl.querySelector(".tt a").getAttribute("title");
+          const artist = [{ id: "", name: artistName }];
+          const album = { id, name: title };
+          const duration = toMillis(trEl.querySelector(".f-pr .s-fc4").textContent);
+          const updateTime = trEl.querySelector(".col5 .s-fc4").textContent;
+
+          const track = new Track(tid, NetEase.CODE, tTitle, artist, album, duration, result.cover);
+          track.type = result.type;
+          track.pid = id;
+          track.songlistId = songlistId;
+          track.extra2 = updateTime;
+          track.lyric.addLine("999:99.000", about);
+
+          result.addTrack(track);
+        });
+        resolve(result);
       });
     });
   }

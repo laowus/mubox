@@ -174,10 +174,16 @@ export const usePlayStore = defineStore("play", {
       }
     },
     resetQueue() {
+      console.log("playStore.js => resetQueue");
       this.isAutoPlaying = false;
       this.queueTracks.length = 0;
       this.playingIndex = -1;
       this.__resetPlayState();
+    },
+    __resetPlayState() {
+      this.playing = false;
+      this.currentTime = 0;
+      this.progress = 0.0;
     },
     updateCurrentTime(secs) {
       this.currentTime = secs * 1000;

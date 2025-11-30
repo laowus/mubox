@@ -1,6 +1,6 @@
 [package]
 name = "mubox"
-version = "0.1.1"
+version = "0.1.2"
 description = "MuBox音乐盒"
 authors = ["you"]
 edition = "2021"

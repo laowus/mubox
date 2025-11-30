@@ -6,7 +6,7 @@ import { useAppCommonStore } from "./store/appCommonStore";
 import { usePlatformStore } from "./store/platformStore";
 import { storeToRefs } from "pinia";
 import { PLAY_STATE, TRAY_ACTION } from "./common/Constants";
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
 import { Playlist } from "./common/Playlist";
 const { currentTrack, queueTracksSize } = storeToRefs(usePlayStore());
 const { playNextTrack, setAutoPlaying, playTrackDirectly, isCurrentTrack, removeTrack, updateCurrentTime, setPlaying, addTracks, resetQueue } = usePlayStore();
@@ -93,7 +93,7 @@ const playPlaylist = async (playlist, text, traceId) => {
 
 /* 播放歌单 */
 const tryPlayPlaylist = async (playlist, text, traceId) => {
-  console.log("tryPlayPlaylist", playlist, text, traceId);  
+  console.log("tryPlayPlaylist", playlist, text, traceId);
   try {
     playPlaylist(playlist, text, traceId);
   } catch (error) {
@@ -161,7 +161,12 @@ EventBus.on("track-pos", (secs) => {
   updateCurrentTime(secs);
 });
 
+watch(queueTracksSize, (nv, ov) => {
+  if (nv < 1) EventBus.emit("playbackQueue-empty");
+});
+
 EventBus.on("track-state", (state) => {
+  console.log("track-state", state);
   switch (state) {
     case PLAY_STATE.PLAYING:
       setPlaying(true);

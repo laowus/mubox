@@ -10,6 +10,7 @@ import { inject, onMounted, ref } from "vue";
 import { storeToRefs } from "pinia";
 import AddFolderFileBtn from "../components/AddFolderFileBtn.vue";
 import Back2TopBtn from "../components/Back2TopBtn.vue";
+import BatchActionBtn from "../components/BatchActionBtn.vue";
 import { useAppCommonStore } from "../store/appCommonStore";
 import { useLocalMusicStore } from "../store/localMusicStore";
 import { usePlayStore } from "../store/playStore";
@@ -58,6 +59,16 @@ onMounted(resetBack2TopBtn);
         <div class="action">
           <PlayAddAllBtn :leftAction="playAll" :rightAction="() => addAll()"></PlayAddAllBtn>
           <AddFolderFileBtn :leftAction="addFolders" :rightAction="addFiles" class="spacing"></AddFolderFileBtn>
+          <BatchActionBtn
+            :deleteBtn="true"
+            :leftAction="
+              () => {
+                console.log('删除所有');
+              }
+            "
+            :rightAction="resetAll"
+            class="spacing"
+          ></BatchActionBtn>
         </div>
       </div>
     </div>

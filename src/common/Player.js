@@ -86,6 +86,7 @@ export class Player {
         self.notifyStateChanged(PLAY_STATE.PAUSE);
       },
       onend: function () {
+        console.log("player.js 停止播放");
         self.notifyStateChanged(PLAY_STATE.END);
       },
       onseek: function () {
@@ -193,6 +194,7 @@ export class Player {
   }
 
   notifyStateChanged(state) {
+    console.log(" 监听 播放变化notifyStateChanged", state);
     EventBus.emit("track-state", state);
   }
 
