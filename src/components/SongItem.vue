@@ -5,16 +5,18 @@ import { Track } from "../common/Track";
 import ArtistControl from "./ArtistControl.vue";
 import AlbumControl from "./AlbumControl.vue";
 import { usePlayStore } from "../store/playStore.js";
-
+import { useAppCommonStore } from "../store/appCommonStore";
 const props = defineProps({
   index: Number,
   artistVisitable: Boolean,
   albumVisitable: Boolean,
   data: Object, //Track
+  deleteFn: Function,
 });
 
 const { playing } = storeToRefs(usePlayStore());
 const { addTrack, playTrack } = usePlayStore();
+const { showToast } = useAppCommonStore();
 
 const toString = (value) => {
   return value ? value.toString() : value;
@@ -45,6 +47,13 @@ const addItem = () => {
   addTrack(props.data);
   showToast("歌曲已添加成功！");
 };
+
+const deleteItem = () => {
+  if (props.deleteFn) {
+    props.deleteFn(props.index);
+    showToast("歌曲已删除！");
+  }
+};
 </script>
 
 <template>
@@ -55,6 +64,7 @@ const addItem = () => {
       <div class="action">
         <i @click="playItem" class="iconfont icon-sanjiaoxing"></i>
         <i @click="addItem" class="iconfont icon-tianjia"></i>
+        <i @click="deleteItem" class="iconfont icon-shanchu"></i>
       </div>
     </div>
     <div class="artist spacing1" v-show="!isExtra1Available()">
