@@ -1,10 +1,10 @@
 use std::error::Error;
 use tauri::{App, Manager};
 
-pub fn setup_app(app: &mut App) -> Result<(), Box<dyn Error>> {
+pub fn setup_app(_app: &mut App) -> Result<(), Box<dyn Error>> {
     // 调试环境下打开开发者工具
     #[cfg(debug_assertions)]
-    open_devtools(app)?;
+    open_devtools(_app)?;
 
     Ok(())
 }

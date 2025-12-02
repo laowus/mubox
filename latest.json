@@ -1,11 +1,11 @@
 {
   "version": "0.1.2",
   "notes": "0.1.2",
-  "pub_date": "2025-11-29T05:52:39.191Z",
+  "pub_date": "2025-12-02 15:29",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVROEpDWDd3b0JCakJaUi9MRS9GbHBUN2hnUFJxQ0tBcTRHOXFwQ2ovY1NVUlJRTEZxWkMwZXlXUkliUGRYQmlOaEZQd2dqQmZMVlJuVVBuYlNPbmpVY0NBU3paQVdwQVF3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzY0MzUwMDAxCWZpbGU6TXVCb3jpn7PkuZDnm5JfMC4xLjFfeDY0LXNldHVwLmV4ZQpwWHFWOG1CUTBiSEp5NjJ6Z3lVc2x5ckZhMFhNTW51dFc1QitwU1dhUDdUU2hyMmVKcThjM2FZZ3NmNnlpV1FwTzZhZ0tpVzl5cHZreloyc3UzcUlCdz09Cg==",
-      "url": "https://gitee.com/laowus/mubox/releases/download/0.1.1/MuBox音乐盒_0.1.2_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVROEpDWDd3b0JCakk0UElFNHVEbUN2SG9HamN0TEp4YXFmMGlpaVpuTG5LSjRpQmYwaERCRXNCU3ZtQ1R3T01wdzZHVnZIU0JyWHp5bnIrem4wWXUvVDdiN2lNRGpwU2dRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzY0NjYwNDMwCWZpbGU6TXVCb3jpn7PkuZDnm5JfMC4xLjJfeDY0LXNldHVwLmV4ZQpLTlJ5WDBDYXF0Q2Fsd1hZV2hXMTZCSktwazBkLy9Vck1CTW1CSlk1bGNyaDFvUUZvOHUzUUlNTmFBTU00Y3d4VjdNK29meHZhMkZjcllJb0lWV0pBQT09Cg==",
+      "url": "https://gitee.com/laowus/mubox/releases/download/0.1.2/MuBox音乐盒_0.1.2_x64-setup.exe"
     }
   }
 }
